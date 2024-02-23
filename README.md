@@ -97,4 +97,4 @@ These are just example designs for this project! You can follow these designs as
 
 
 # Bonus
-- constantly ping api every 20 seconds
+- constantly ping api every 20 seconds (if server is giving new info)
