@@ -32,5 +32,10 @@ export default function LinesPage() {
       <TrainList color={currColor} data={data?.trains} />
     </div>
   );
+
+
+
+
+  
 }
 
