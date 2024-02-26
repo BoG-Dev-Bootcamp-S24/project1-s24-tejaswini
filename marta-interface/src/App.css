@@ -5,7 +5,7 @@
 }
 
 nav {
-  background: #333;
+  background: #ffffff;
   color: white;
   padding: 1em;
 }
@@ -28,24 +28,76 @@ nav button.active {
   font-weight: bold;
   opacity: 1;
 }
-
-/* Style for Train component */
 .train {
-  border: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 4px;
   margin: 10px;
   padding: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-.train h2 {
-  margin: 0;
-  padding: 0;
+.train-route {
+  display: flex;
+  align-items: center;
+}
+
+.train-station {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.train-arrow {
+  margin-right: 5px;
+}
+
+.train-line {
+  padding: 2px 8px;
+  border-radius: 4px;
+  color: #fff;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.train.gold {
+  background-color: #cdae00;
+}
+
+.train.red {
+  background-color: #ff4136;
+}
+
+.train.green {
+  background-color: #2ecc40;
+}
+
+.train.blue {
+  background-color: #0074d9;
+}
+
+.train-status {
+  background-color: #ff4136;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+.train-waiting-time {
+  font-size: 1em;
+  font-weight: bold;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background-color: #ddd;
 }
 
 /* Additional styles for delay indication */
-.train.delayed {
-  background-color: #ffdddd;
+.train.delayed .train-status {
+  background-color: #f44336;
 }
 
-.train.on-time {
-  background-color: #ddffdd;
+.train.on-time .train-status {
+  background-color: #2ecc40;
 }

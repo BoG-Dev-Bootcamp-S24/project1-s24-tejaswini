@@ -11,15 +11,32 @@ import React from 'react';
 import Train from '../components/Train.js';
 
 const TrainList = ({ color, data }) => {
-  const filteredData = data.filter(train => train.LINE_COLOR.toLowerCase() === color.toLowerCase());
+  if (!data) return <p>Data is loading or not available.</p>;
 
-  console.log(filteredData);
-  
+  const filteredData = data.filter(train => train.LINE === color.toUpperCase());
+
   return (
     <div>
       {filteredData.length > 0 ? (
         filteredData.map((trainData, index) => (
-          <Train key={index} {...trainData} />
+          <Train
+            key={index}
+            DESTINATION={trainData.DESTINATION}
+            DIRECTION={trainData.DIRECTION}
+            EVENT_TIME={trainData.EVENT_TIME}
+            HEAD_SIGN={trainData.HEAD_SIGN}
+            LINE={trainData.LINE}
+            NEXT_ARR={trainData.NEXT_ARR}
+            STATION={trainData.STATION}
+            TRAIN_ID={trainData.TRAIN_ID}
+            WAITING_SECONDS={trainData.WAITING_SECONDS}
+            WAITING_TIME={trainData.WAITING_TIME}
+            RESPONSETIMESTAMP={trainData.RESPONSETIMESTAMP}
+            VEHICLELONGITUDE={trainData.VEHICLELONGITUDE}
+            VEHICLELATITUDE={trainData.VEHICLELATITUDE}
+            DELAY={trainData.DELAY}
+            TRIP_ID={trainData.TRIP_ID}
+          />
         ))
       ) : (
         <p>No trains available for the {color} line.</p>
