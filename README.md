@@ -110,4 +110,12 @@ These are just example designs for this project! You can follow these designs as
 
 <img src="https://github.com/BoG-Dev-Bootcamp-S24/project1-s24/blob/main/assets/green_page.png" alt="Example Green Line" width="500"></img>
 
+<<<<<<< main
+**HOME**
 
+<img src="https://github.com/BoG-Dev-Bootcamp-S24/project1-s24/blob/main/assets/home_page.png" alt="Example of Home Page" width="500"></img>
+=======
+
+# Bonus
+- constantly ping api every 20 seconds (if server is giving new info)
+>>>>>>> main
