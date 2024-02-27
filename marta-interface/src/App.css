@@ -1,0 +1,103 @@
+/* App.css */
+
+.App {
+  text-align: center;
+}
+
+nav {
+  background: #ffffff;
+  color: white;
+  padding: 1em;
+}
+
+nav button {
+  margin: 0 0.5em;
+  padding: 0.5em 1em;
+  cursor: pointer;
+  background: gray;
+  border: none;
+  color: white;
+}
+
+nav button:hover {
+  opacity: 0.8;
+}
+
+/* Add styles for active line button */
+nav button.active {
+  font-weight: bold;
+  opacity: 1;
+}
+.train {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 4px;
+  margin: 10px;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.train-route {
+  display: flex;
+  align-items: center;
+}
+
+.train-station {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.train-arrow {
+  margin-right: 5px;
+}
+
+.train-line {
+  padding: 2px 8px;
+  border-radius: 4px;
+  color: #fff;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.train.gold {
+  background-color: #cdae00;
+}
+
+.train.red {
+  background-color: #ff4136;
+}
+
+.train.green {
+  background-color: #2ecc40;
+}
+
+.train.blue {
+  background-color: #0074d9;
+}
+
+.train-status {
+  background-color: #ff4136;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+.train-waiting-time {
+  font-size: 1em;
+  font-weight: bold;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background-color: #ddd;
+}
+
+/* Additional styles for delay indication */
+.train.delayed .train-status {
+  background-color: #f44336;
+}
+
+.train.on-time .train-status {
+  background-color: #2ecc40;
+}
