@@ -3,7 +3,7 @@ const FilterBar = ({
   east, west, arrivingTrains, scheduledTrains,
   isNorthbound, isSouthbound, isEastbound, isWestbound
 }) => {
-  const isEastWest = color === 'GREEN' || color === 'BLUE';
+  const isEastWest = color === 'green' || color === 'blue';
 
   const buttons = [
     { label: 'Arriving', isActive: arrivingTrains, onClick: arrivingPressed },
