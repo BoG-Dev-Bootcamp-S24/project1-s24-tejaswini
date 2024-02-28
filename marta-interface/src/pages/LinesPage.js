@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import NavBar from '../components/Navbar.js';
 import TrainList from '../pages/TrainList.js';
 import FilterBar from '../components/FilterBar.js';
+import Station from '../components/Station.js';
 
 export default function LinesPage() {
   // state for line color and loading status
@@ -16,7 +17,7 @@ export default function LinesPage() {
   const [isSouthbound, setIsSouthbound] = useState(false);
   const [isEastbound, setIsEastbound] = useState(false);
   const [isWestbound, setIsWestbound] = useState(false);
-
+  const [selectedStation, setSelectedStation] = useState('All Stations');
 
   useEffect(() => {
     async function fetchData() {
@@ -80,9 +81,10 @@ export default function LinesPage() {
     };
     
 
-
 const handleLineChange = (color) => {
   setCurrColor(color);
+  // Optionally reset station filter when line color changes
+  setSelectedStation('All Stations');
 };
 
 if (loading) {
@@ -107,6 +109,13 @@ return (
       isEastbound={isEastbound}
       isWestbound={isWestbound}
     />
+
+    <Station
+      data={data}
+      selectedStation={selectedStation}
+      onSelectStation={setSelectedStation}
+    />
+
     <TrainList
       color={currColor}
       data={data}
@@ -116,6 +125,7 @@ return (
       isSouthbound={isSouthbound}
       isEastbound={isEastbound}
       isWestbound={isWestbound}
+      selectedStation={selectedStation}
     />
   </div>
 );

@@ -9,6 +9,7 @@ export default function TrainList({
   isSouthbound,
   isEastbound,
   isWestbound,
+  selectedStation
 }) {
   if (!data) return <p>Data is loading or not available.</p>;
 
@@ -17,6 +18,7 @@ export default function TrainList({
   const filteredData = data.filter((train) => {
     const isArriving = train.WAITING_TIME === "ARRIVING";
     const matchesArrivalFilter = arrivingTrains ? isArriving : scheduledTrains ? !isArriving : true;
+    const matchesStationFilter = selectedStation === 'All Stations' || train.HEAD_SIGN === selectedStation;
 
     let matchesDirectionFilter = false;
     if (isEastWest) {
@@ -29,7 +31,7 @@ export default function TrainList({
       matchesDirectionFilter = (isNorthbound && isNorthboundTrain) || (isSouthbound && isSouthboundTrain) || (!isNorthbound && !isSouthbound);
     }
 
-    return train.LINE === color.toUpperCase() && matchesArrivalFilter && matchesDirectionFilter;
+    return train.LINE === color.toUpperCase() && matchesArrivalFilter && matchesDirectionFilter && matchesStationFilter;
   });
 
   return (
