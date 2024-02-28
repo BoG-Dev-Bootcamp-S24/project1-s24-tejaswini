@@ -69,6 +69,17 @@ When a button is clicked it will filter the trains by the filter titled on the b
 
 As a bonus, once the rest of the code displays successfully, we recommend incorporating conditional rendering so that if the filters used on the trainlist result in an empty list of trains, then display something else to notify the user that there are no trains rather than just displaying an empty page. For example, you could add a "No Current Trains Match Filters" message.
 
+### Two New Pages (**NEW**)
+
+Now that we are set up, we want to add two new pages! We will call these `Home.js` and `About.js`. 
+
+In `Home.js` you can create a simple MARTA homescreen page up to your own design or follow the Figma Page below that will have the form of a navbar that takes you to the `LinesPage.js` for each line with the display for `LinesPage.js` being the line that was clicked on in the navbar. There will also be a link to an About page at the top right of the home screen.
+
+In `About.js`, you will create a simple page that displays the MARTA map and some basic information about the MARTA's purpose on the page. This page will include a button somewhere linking back to the home page.
+
+### Routing (**NEW**)
+Install React Router by entering `npm install react-router-dom` in terminal. At the top of each page import router by doing `import { BrowserRouter, Route, Routes } from 'react-router-dom';`. Now, you can set up routes in the return of your display pages by doing
+
 ## Requirements
 - In `src` create two folders: `pages` and `components`.
 - Create a Train.js component inside the components folder that displays the information for each train, and a TrainList.js component that displays the train data for a specified line
@@ -78,6 +89,10 @@ As a bonus, once the rest of the code displays successfully, we recommend incorp
 - Incorporate state buttons to display trains based on each line color (gold, red, green blue)
 - Make the navbar functional so that the trains are filtered by one station at a time
 - Make the four buttons functional so that the trains are filtered by one or more buttons at a time ("Arriving", "Scheduled", "Northbound/Southbound" or "Eastbound/Westbound")
+- **NEW**
+  - Create a `Home.js` and `About.js`.
+  - Use React routing to link between `LinesPage.js`, `Home.js`, and `About.js`.
+  - When routing from `Home.js` to `LinesPage.js` there needs to be four separate links titled by line and linking to `LinesPage.js` with each line's props. 
 - Bonus:
   - Conditional rendering for when there are no trains to display
   - Tailwind CSS
@@ -95,6 +110,12 @@ These are just example designs for this project! You can follow these designs as
 
 <img src="https://github.com/BoG-Dev-Bootcamp-S24/project1-s24/blob/main/assets/green_page.png" alt="Example Green Line" width="500"></img>
 
+<<<<<<< main
+**HOME**
+
+<img src="https://github.com/BoG-Dev-Bootcamp-S24/project1-s24/blob/main/assets/home_page.png" alt="Example of Home Page" width="500"></img>
+=======
 
 # Bonus
 - constantly ping api every 20 seconds (if server is giving new info)
+>>>>>>> main
