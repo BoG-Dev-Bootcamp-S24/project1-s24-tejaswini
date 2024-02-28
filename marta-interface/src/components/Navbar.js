@@ -1,6 +1,6 @@
 import React from 'react';
 
-const NavBar = ({ color, onLineChange, data }) => {
+const NavBar = ({ color, onLineChange }) => {
   const handleLineClick = (newColor) => {
     onLineChange(newColor);
   };

@@ -1,11 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import NavBar from '../components/Navbar.js';
 import TrainList from '../pages/TrainList.js';
+import FilterBar from '../components/FilterBar.js';
 
 export default function LinesPage() {
-  const [currColor, setCurrColor] = useState('blue'); // default to 'blue' line bc it runs at night
+  // state for line color and loading status
+  const [currColor, setCurrColor] = useState('blue');
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
+
+  // state for filter options
+  const [arrivingTrains, setArrivingTrains] = useState(false);
+  const [scheduledTrains, setScheduledTrains] = useState(true);
+  const [isNorthbound, setIsNorthbound] = useState(false);
+  const [isSouthbound, setIsSouthbound] = useState(false);
+  const [isEastbound, setIsEastbound] = useState(false);
+  const [isWestbound, setIsWestbound] = useState(false);
+
 
   useEffect(() => {
     async function fetchData() {
@@ -20,28 +31,92 @@ export default function LinesPage() {
         setData(jsonData); // data = JSON from the response
       } catch (error) {
         console.error("Fetching trains data error: ", error);
-        setData([]); // In case of an error, fall back to default empty data
+        setData([]); // if error, set data to empty array
       } finally {
-        setLoading(false); // Stop loading regardless of the fetch result
+        setLoading(false);
       }
     }
 
     fetchData();
-  }, [currColor]); // run the effect only when currColor changes
-
-  const handleLineChange = (color) => {
-    setCurrColor(color);
+  }, [currColor]); 
+  
+  const toggleArriving = () => {
+    if (!arrivingTrains) {
+      setArrivingTrains(true);
+      setScheduledTrains(false);
+    } else { 
+      setArrivingTrains(false);
+    }
   };
+  
+  const toggleScheduled = () => {
+    if (!scheduledTrains) {
+      setScheduledTrains(true);
+      setArrivingTrains(false);
+    } else {
+      setScheduledTrains(false);
+    }
+  };
+    
+  const toggleNorthbound = () => {
+    setIsNorthbound(prevState => !prevState);
+    setIsSouthbound(false); 
+  };
+  
+  const toggleSouthbound = () => {
+    setIsSouthbound(prevState => !prevState);
+    setIsNorthbound(false); 
+  };
+  
+    
+    const toggleEastbound = () => {
+      setIsEastbound(prevState => !prevState);
+      setIsWestbound(false);
+    };
+    
+    const toggleWestbound = () => {
+      setIsWestbound(prevState => !prevState);
+      setIsEastbound(false);
+    };
+    
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
 
+const handleLineChange = (color) => {
+  setCurrColor(color);
+};
 
-  return (
-    <div>
-      <NavBar color={currColor} onLineChange={handleLineChange} />
-      <TrainList color={currColor} data={data} />
-    </div>
-  );
+if (loading) {
+  return <div>Loading...</div>;
+}
+
+return (
+  <div>
+    <NavBar color={currColor} onLineChange={handleLineChange} />
+    <FilterBar
+      color={currColor}
+      arrivingPressed={toggleArriving}
+      scheduledPressed={toggleScheduled}
+      north={toggleNorthbound}
+      south={toggleSouthbound}
+      east={toggleEastbound}
+      west={toggleWestbound}
+      arrivingTrains={arrivingTrains}
+      scheduledTrains={scheduledTrains}
+      isNorthbound={isNorthbound}
+      isSouthbound={isSouthbound}
+      isEastbound={isEastbound}
+      isWestbound={isWestbound}
+    />
+    <TrainList
+      color={currColor}
+      data={data}
+      arrivingTrains={arrivingTrains}
+      scheduledTrains={scheduledTrains}
+      isNorthbound={isNorthbound}
+      isSouthbound={isSouthbound}
+      isEastbound={isEastbound}
+      isWestbound={isWestbound}
+    />
+  </div>
+);
 }

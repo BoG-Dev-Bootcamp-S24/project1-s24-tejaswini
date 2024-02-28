@@ -1,7 +1,8 @@
-/* App.css */
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 .App {
   text-align: center;
+  font-family: 'Jost', sans-serif;
 }
 
 nav {
@@ -17,13 +18,13 @@ nav button {
   background: gray;
   border: none;
   color: white;
+  font-family: 'Jost', sans-serif;
 }
 
 nav button:hover {
   opacity: 0.8;
 }
 
-/* Add styles for active line button */
 nav button.active {
   font-weight: bold;
   opacity: 1;
@@ -93,11 +94,48 @@ nav button.active {
   background-color: #ddd;
 }
 
-/* Additional styles for delay indication */
 .train.delayed .train-status {
   background-color: #f44336;
 }
 
 .train.on-time .train-status {
   background-color: #2ecc40;
+}
+
+.train-line-display {
+  display: flex;
+  align-items: center;
+  margin: 10px;
+}
+
+.line-color-display {
+  text-transform: uppercase;
+  font-size: 1.5em;
+  margin: 20px 0;
+  font-weight: bold;
+}
+
+
+.filterButtons {
+  display: flex;
+  justify-content: center;
+}
+
+.filterButton {
+  margin: 0 0.5em;
+  padding: 0.5em 1em;
+  cursor: pointer;
+  background: gray;
+  border: none;
+  color: white;
+  font-family: 'Jost', sans-serif;
+}
+
+.filterButton:hover {
+  opacity: 0.8;
+}
+
+.filterButton.active {
+  font-weight: bold;
+  background-color: #9fd2ff; 
 }
