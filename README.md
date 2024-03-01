@@ -1,6 +1,8 @@
 # Project 1 - Marta Interface
 
 ## Marta Interface Demo
+https://github.com/tejaswini-rb/project1-s24-tejaswini/assets/114116509/5f45a8eb-641d-4fe8-9d3a-cb395227d600
+
 
 
 ## Desciption
@@ -118,7 +120,3 @@ These are just example designs for this project! You can follow these designs as
 
 <img src="https://github.com/BoG-Dev-Bootcamp-S24/project1-s24/blob/main/assets/home_page.png" alt="Example of Home Page" width="500"></img>
 =======
-
-# Bonus
-- constantly ping api every 20 seconds (if server is giving new info)
->>>>>>> main
