@@ -1,0 +1,36 @@
+.aboutpage {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .logo-container {
+    display: flex;
+    justify-content: center; 
+    padding-top: 20px; 
+
+  }
+  
+  .main-content {
+    display: flex;
+    justify-content: space-between; 
+    padding: 20px; 
+  }
+  
+  .left-content {
+    flex: 1;
+    padding-right: 10px;
+    padding-left: 10px;
+    font-size: 18px;
+  }
+  
+  .right-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .marta-logo, .marta-map {
+    max-width: 100%;
+    height: auto;
+  }
+  

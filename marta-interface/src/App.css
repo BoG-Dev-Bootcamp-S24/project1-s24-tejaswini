@@ -1,25 +1,46 @@
 @import url('https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Inika:wght@400;500;600;700;&display=swap');
+
 .App {
   text-align: center;
   font-family: 'Jost', sans-serif;
 }
 
+body {
+    background: linear-gradient(to bottom, #4F2A69, #0D061A); 
+    min-height: 100vh; 
+    margin: 0;
+    color: #ecf0f1; 
+    background-attachment: fixed;
+    overflow: hidden;
+
+}
+
 nav {
-  background: #ffffff;
+  background: linear-gradient(to bottom, #3d1a69, #46235e);
   color: white;
   padding: 1em;
+  padding-bottom: 3px;
+}
+
+.nav-buttons {
+  display: flex;
+  justify-content: center;
 }
 
 nav button {
   margin: 0 0.5em;
   padding: 0.5em 1em;
   cursor: pointer;
-  background: gray;
   border: none;
-  color: white;
+  color: rgb(255, 255, 255);
   font-family: 'Jost', sans-serif;
+  border-radius: 5px;
+  font-weight: bold;
+  border: rgba(255, 255, 255, 0.584) 1px solid;
 }
+
 
 nav button:hover {
   opacity: 0.8;
@@ -29,106 +50,142 @@ nav button.active {
   font-weight: bold;
   opacity: 1;
 }
+
+.component-train {
+  display: flex;
+  flex-direction: row;
+}
+
+
 .train {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  background-color: #fff;
+  padding: 12px;
+  margin-bottom: 10px;
+  background-color: #ffffff1a;
   border-radius: 4px;
-  margin: 10px;
-  padding: 10px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border: 2px solid #ffffff79;
 }
 
-.train-route {
+.train-initial {
+  font-size: 3rem;
+  padding-right: 35px;
+  padding-left: 20px;
+  font-family: Inika, serif;
+}
+
+.train-middle {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.train-top, .train-bottom {
   display: flex;
   align-items: center;
 }
 
-.train-station {
-  font-weight: bold;
-  margin-right: 5px;
+.train-top {
+  justify-content: start;
+  margin-bottom: 6px;
+  margin-right: 300px;
+  font-size: 1.3rem;
 }
 
-.train-arrow {
-  margin-right: 5px;
+.train-bottom {
+  justify-content: start;
+}
+
+.train-line-status {
+  display: flex;
+  align-items: center;
 }
 
 .train-line {
-  padding: 2px 8px;
+  padding: 4px 8px;
+  border: 1px solid #ffffff79;
   border-radius: 4px;
-  color: #fff;
-  font-weight: bold;
-  text-transform: capitalize;
-}
-
-.train.gold {
-  background-color: #cdae00;
-}
-
-.train.red {
-  background-color: #ff4136;
-}
-
-.train.green {
-  background-color: #2ecc40;
-}
-
-.train.blue {
-  background-color: #0074d9;
+  white-space: nowrap;
+  margin-right: 14px;
 }
 
 .train-status {
-  background-color: #ff4136;
-  color: #fff;
   padding: 4px 8px;
   border-radius: 4px;
-  font-size: 0.9em;
+  white-space: nowrap;
+  border: 1px solid #ffffff79;
 }
 
 .train-waiting-time {
-  font-size: 1em;
-  font-weight: bold;
-  padding: 2px 8px;
+  margin-top: 1.6%;
+  padding: 4px 8px;
   border-radius: 4px;
-  background-color: #ddd;
+  white-space: nowrap;
+  background-color: #ffffff2c;
+  align-self: flex-start;
+  margin-left: auto;
+  margin-right: 16px;
+  float: right;
+  font-size: 17PX;
 }
 
-.train.delayed .train-status {
-  background-color: #f44336;
+.train-status.delayed {
+  background-color: rgba(190, 0, 0, 0.40);
 }
 
-.train.on-time .train-status {
-  background-color: #2ecc40;
+.train-status.on-time {
+  background-color: rgba(0, 190, 0, 0.40);
 }
+
+
+
+.train-status.delayed {
+  background-color: rgba(190, 0, 0, 0.40);
+}
+
+.train-status.on-time {
+  background-color: rgba(0, 190, 0, 0.40);
+}
+
 
 .train-line-display {
   display: flex;
   align-items: center;
-  margin: 10px;
+  margin: 20px;
+  
 }
 
 .line-color-display {
   text-transform: uppercase;
   font-size: 1.5em;
   margin: 20px 0;
-  font-weight: bold;
+  margin-left: -15px;
+  margin-right: -15px;
+  font-weight: 500;
+  background: #ff000032;
+  padding: 10px;
+  text-align: center;
 }
+
 
 
 .filterButtons {
   display: flex;
   justify-content: center;
+  margin-bottom: 15px;
+  margin-top: -5px;
 }
 
 .filterButton {
   margin: 0 0.5em;
   padding: 0.5em 1em;
   cursor: pointer;
-  background: gray;
+  background: rgba(128, 128, 128, 0.467);
   border: none;
   color: white;
   font-family: 'Jost', sans-serif;
+  border-radius: 5px;
+  font-weight: bold;
 }
 
 .filterButton:hover {
@@ -137,5 +194,83 @@ nav button.active {
 
 .filterButton.active {
   font-weight: bold;
-  background-color: #9fd2ff; 
+  background-color: #e59fff72; 
 }
+
+
+.station-container {
+  display: flex;
+  align-items: flex-start; 
+  min-height: 100vh;
+}
+
+
+
+.list-container {
+  display: flex;
+  flex-direction: column;
+  max-height: 74vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #c1c1c1 #4F2A69;
+  width: 1200px;
+  padding-right: 20px;
+  padding-left: 10px;
+}
+
+.station-list-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.station-list-container::-webkit-scrollbar-track {
+  background: #4F2A69;
+}
+
+.station-list-container::-webkit-scrollbar-thumb {
+  background-color: #c1c1c1;
+  border-radius: 4px;
+}
+
+
+.station-menu {
+  flex-basis: 20%; 
+  background: linear-gradient(to bottom, #150533, #2b0248);
+  color: white; 
+  padding-left: 20px; 
+  padding-right: 20px;
+  padding-bottom: 20px;
+  margin-left: 15px;
+  margin-bottom: 10px;
+  margin-right: 15px;
+  border-radius: 5px;
+  overflow-y: auto; 
+  scrollbar-width: thin; 
+  border: 2px solid #ffffff7a;
+  max-height: 71.5vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #ffffff72 #4F2A69; 
+}
+
+.station-button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  background: #3e1a6900;
+  color: white;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  border-bottom: 2px solid #c1c1c1;
+}
+.station-button:hover, .station-button.active {
+  background: #2e1357;
+}
+
+.station-header {
+  color: gray;
+  font-weight: normal;
+  text-align: left;
+}
+

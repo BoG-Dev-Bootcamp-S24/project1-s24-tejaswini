@@ -3,14 +3,15 @@ import NavBar from '../components/Navbar.js';
 import TrainList from '../pages/TrainList.js';
 import FilterBar from '../components/FilterBar.js';
 import Station from '../components/Station.js';
+import { useParams } from 'react-router-dom';
 
 export default function LinesPage() {
-  // state for line color and loading status
-  const [currColor, setCurrColor] = useState('blue');
+  const { color } = useParams(); 
+  const [currColor, setCurrColor] = useState(color || 'blue'); 
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
-  // state for filter options
+
   const [arrivingTrains, setArrivingTrains] = useState(false);
   const [scheduledTrains, setScheduledTrains] = useState(true);
   const [isNorthbound, setIsNorthbound] = useState(false);
@@ -21,18 +22,17 @@ export default function LinesPage() {
 
   useEffect(() => {
     async function fetchData() {
-      setLoading(true); // load before fetching data
+      setLoading(true);
       try {
         const response = await fetch(`https://midsem-bootcamp-api.onrender.com/arrivals/${currColor}`);
-        // error handling
         if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`); //if response not OK, throw error
+          throw new Error(`HTTP error! status: ${response.status}`);
         }
         const jsonData = await response.json();
-        setData(jsonData); // data = JSON from the response
+        setData(jsonData);
       } catch (error) {
         console.error("Fetching trains data error: ", error);
-        setData([]); // if error, set data to empty array
+        setData([]);
       } finally {
         setLoading(false);
       }
@@ -40,6 +40,7 @@ export default function LinesPage() {
 
     fetchData();
   }, [currColor]); 
+
   
   const toggleArriving = () => {
     if (!arrivingTrains) {
@@ -83,7 +84,6 @@ export default function LinesPage() {
 
 const handleLineChange = (color) => {
   setCurrColor(color);
-  // Optionally reset station filter when line color changes
   setSelectedStation('All Stations');
 };
 
@@ -110,11 +110,17 @@ return (
       isWestbound={isWestbound}
     />
 
-    <Station
+
+
+  <div className="station-container">
+     <Station
       data={data}
       selectedStation={selectedStation}
       onSelectStation={setSelectedStation}
     />
+  
+
+  <div className="train-content">
 
     <TrainList
       color={currColor}
@@ -127,6 +133,10 @@ return (
       isWestbound={isWestbound}
       selectedStation={selectedStation}
     />
+    </div>
+    </div>
   </div>
 );
+
 }
+

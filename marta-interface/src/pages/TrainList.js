@@ -13,30 +13,31 @@ export default function TrainList({
 }) {
   if (!data) return <p>Data is loading or not available.</p>;
 
-  const isEastWest = color === 'GREEN' || color === 'BLUE';
 
   const filteredData = data.filter((train) => {
-    const isArriving = train.WAITING_TIME === "ARRIVING";
+    const isArriving = train.WAITING_TIME === "Arriving";
     const matchesArrivalFilter = arrivingTrains ? isArriving : scheduledTrains ? !isArriving : true;
-    const matchesStationFilter = selectedStation === 'All Stations' || train.HEAD_SIGN === selectedStation;
-
-    let matchesDirectionFilter = false;
-    if (isEastWest) {
-      const isEastboundTrain = train.DIRECTION === "E";
-      const isWestboundTrain = train.DIRECTION === "W";
-      matchesDirectionFilter = (isEastbound && isEastboundTrain) || (isWestbound && isWestboundTrain) || (!isEastbound && !isWestbound);
-    } else {
-      const isNorthboundTrain = train.DIRECTION === "N";
-      const isSouthboundTrain = train.DIRECTION === "S";
-      matchesDirectionFilter = (isNorthbound && isNorthboundTrain) || (isSouthbound && isSouthboundTrain) || (!isNorthbound && !isSouthbound);
+  
+    let matchesDirectionFilter = true; 
+    if (isNorthbound) {
+      matchesDirectionFilter = train.DIRECTION === "N";
+    } else if (isSouthbound) {
+      matchesDirectionFilter = train.DIRECTION === "S";
+    } else if (isEastbound) {
+      matchesDirectionFilter = train.DIRECTION === "E";
+    } else if (isWestbound) {
+      matchesDirectionFilter = train.DIRECTION === "W";
     }
-
+  
+    const matchesStationFilter = selectedStation === 'All Stations' || train.STATION === selectedStation;
+  
     return train.LINE === color.toUpperCase() && matchesArrivalFilter && matchesDirectionFilter && matchesStationFilter;
   });
+  
 
   return (
     <div>
-      <div className="line-color-display">{color.toUpperCase()} Line</div>
+      <div className="list-container">
       {filteredData.length > 0 ? (
         filteredData.map((train, index) => (
           <Train key={index} {...train} />
@@ -44,6 +45,7 @@ export default function TrainList({
       ) : (
         <p>No trains available for the {color} line.</p>
       )}
+      </div>
     </div>
   );
 }
